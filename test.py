@@ -27,7 +27,7 @@ def test_lidar_connection():
         data = sock.recv(2048)  # Read up to 2KB of data
         
         if data:
-            print(f"🎉 Received {len(data)} bytes of live sensor data!")
+            print(f" Received {len(data)} bytes of live sensor data!")
             print(f"Raw data preview (first 50 bytes): {data[:50]}")
         else:
             print("⚠️ Connected, but received empty data from the sensor.")
