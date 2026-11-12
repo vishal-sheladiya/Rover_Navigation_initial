@@ -27,7 +27,7 @@ def run_real_imu_logger():
         try:
             with TCPDriver(PIKSI_IP, PIKSI_PORT) as driver:
                 with Handler(Framer(driver.read, None, verbose=False)) as source:
-                    print(f"✅ Connected! Logging real Bosch BMI160 IMU data to '{LOG_FILENAME}' (Ctrl+C to stop)...")
+                    print(f" Connected! Logging real Bosch BMI160 IMU data to '{LOG_FILENAME}' (Ctrl+C to stop)...")
                     
                     for msg, metadata in source.filter(SBP_MSG_IMU_RAW):
                         current_time = time.time()
@@ -50,9 +50,9 @@ def run_real_imu_logger():
                         print(f"[{time.strftime('%H:%M:%S')}] Accel (m/s²): X={ax:.2f}, Y={ay:.2f}, Z={az:.2f} | Gyro (deg/s): Z={gz:.2f}")
 
         except KeyboardInterrupt:
-            print(f"\n💾 Stopped logging. Real IMU session saved to '{LOG_FILENAME}'.")
+            print(f"\n Stopped logging. Real IMU session saved to '{LOG_FILENAME}'.")
         except Exception as e:
-            print(f"❌ Connection Error: {e}")
+            print(f" Connection Error: {e}")
 
 if __name__ == "__main__":
     run_real_imu_logger()
